@@ -50,7 +50,7 @@ function Historial_1(){
 //---------------------------------------------------------------------------------------------------
 
 //----------------------------función para el Historial 2-----------------------------------------------
-function Historial_1(){	
+function Historial_2(){	
 	//alert("led off");
 	console.log("historial2");
 	message = new Paho.MQTT.Message("Historial2");
@@ -58,7 +58,7 @@ function Historial_1(){
     	client.send(message);
 	//document.getElementById("sensor").innerHTML="led off";
 }
-//-----
+//-----------------------------------------------------------------------------------------------------
 
 
 
@@ -110,15 +110,35 @@ function Historial_1(){
   // called when a message arrives
   function onMessageArrived(message) {
     console.log("onMessageArrived:"+message.payloadString);
-	if(message.destinationName == "ralopez.fie@unach.edu.ec/test1"){
-	   document.getElementById("sensor").innerHTML=message.payloadString;
+	//----------------------------------------Sección Para mensajes de encendido y apagado--------------------------------------------------------	
+  
+	if((message.destinationName == "ralopez.fie@unach.edu.ec/test1") && (Mensaje == "Led 1 Encendido") ){
+	   document.getElementById("sensor1").innerHTML=message.payloadString;
 	   }
+	else if((message.destinationName == "ralopez.fie@unach.edu.ec/test1") && (Mensaje == "Led 2 Encendido") ){
+	   document.getElementById("sensor2").innerHTML=message.payloadString;
+	   }
+	else if((message.destinationName == "ralopez.fie@unach.edu.ec/test1") && (Mensaje == "Led 1 Apagado") ){
+	   document.getElementById("sensor1").innerHTML=message.payloadString;
+	   }
+	else if((message.destinationName == "ralopez.fie@unach.edu.ec/test1") && (Mensaje == "Led 2 Apagado") ){
+	   document.getElementById("sensor2").innerHTML=message.payloadString;
+	   }  
+ //---------------------------------------------------------------------------------------------------------------------------------	
+ 
+//----------------------------------------Sección Para mensajes de Historial 1--------------------------------------------------------	
+	  
 	else if(message.destinationName == "ralopez.fie@unach.edu.ec/test2"){
-	  document.getElementById("historial").innerHTML=message.payloadString;
+	  document.getElementById("historiall_1").innerHTML=message.payloadString;
 	}
+//------------------------------------------------------------------------------------------------------------------------------------------  
+
+//----------------------------------------Sección Para mensajes de Historial 2--------------------------------------------------------	
+	  
 	else if(message.destinationName == "ralopez.fie@unach.edu.ec/test3"){
-	  document.getElementById("estado").innerHTML=message.payloadString;
-	}  
+	  document.getElementById("historiall_2").innerHTML=message.payloadString;
+	}
+//-----------------------------------------------------------------------------------------------------------------------------------
   }
   
 
