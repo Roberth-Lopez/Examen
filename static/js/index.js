@@ -1,5 +1,43 @@
 //https://www.eclipse.org/paho/clients/js/
 
+//-------------------------función para encender o apagar los leds-----------------------------------
+function LED1_On() {
+	//alert("led on");
+	console.log("led1on");
+	//document.getElementById("sensor").innerHTML="led on";
+	message = new Paho.MQTT.Message("Encender1");
+    	message.destinationName = "ralopez.fie@unach.edu.ec/test";
+    	client.send(message);
+  
+}
+function LED2_On() {
+	//alert("led on");
+	console.log("led2on");
+	//document.getElementById("sensor").innerHTML="led on";
+	message = new Paho.MQTT.Message("Encender2");
+    	message.destinationName = "ralopez.fie@unach.edu.ec/test";
+    	client.send(message);
+  
+}
+function LED1_Off(){	
+	//alert("led off");
+	console.log("led1off");
+	message = new Paho.MQTT.Message("Apagar1");
+    	message.destinationName = "ralopez.fie@unach.edu.ec/test";
+    	client.send(message);
+	//document.getElementById("sensor").innerHTML="led off";
+}
+function LED2_Off(){	
+	//alert("led off");
+	console.log("led2off");
+	message = new Paho.MQTT.Message("Apagar2");
+    	message.destinationName = "ralopez.fie@unach.edu.ec/test";
+    	client.send(message);
+	//document.getElementById("sensor").innerHTML="led off";
+}
+//---------------------------------------------------------------------------------------------------
+
+
 //----------------------------función para el Historial 1-----------------------------------------------
 function Historial_1(){	
 	//alert("led off");
